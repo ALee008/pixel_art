@@ -9,7 +9,17 @@
   <body>
     <div id="palette">
       <label for="pen">Wähle eine Farbe aus: </label>
-      <input type="color" id="pen" name="color" value="ff0000" />
+      <input type="color" id="pen" name="color" value="#e66465" />
+      <div id="color-presets">
+        <div class="pen" style="background-color: #000000;" onclick="setPresetPixelColor(this)"></div>
+        <div class="pen" style="background-color: #ff0000;" onclick="setPresetPixelColor(this)"></div>
+        <div class="pen" style="background-color: #ff8800;" onclick="setPresetPixelColor(this)"></div>
+        <div class="pen" style="background-color: #ffff00;" onclick="setPresetPixelColor(this)"></div>
+        <div class="pen" style="background-color: #adff2f;" onclick="setPresetPixelColor(this)"></div>
+        <div class="pen" style="background-color: #006400;" onclick="setPresetPixelColor(this)"></div>
+        <div class="pen" style="background-color: #40e0d0;" onclick="setPresetPixelColor(this)"></div>
+        <div class="pen" style="background-color: #00ccff;" onclick="setPresetPixelColor(this)"></div>
+      </div>
     </div>
     <label>Spalten x Zeilen:</label>
     <input
@@ -29,6 +39,7 @@
     />
     <button id="create-grid" onClick="createGrid()">Erstellen</button>
     <div id="art"></div>
+    <div id="color-history"></div>
     <script src="script.js"></script>
   </body>
 </html>

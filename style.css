@@ -1,3 +1,10 @@
+html {
+  margin: 2em;
+}
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
 #art {
   display:table;
   
@@ -28,9 +35,10 @@ margin-bottom: 1em;
 
 .pen {
   display: inline-block;
-  width: 40px;
-  height: 40px;
-  border: solid 2px black;
+  margin-top: .5em;
+  width: 20px;
+  height: 20px;
+  border: solid 1px black;
 }
 
 label {
