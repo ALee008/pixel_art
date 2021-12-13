@@ -4,13 +4,13 @@
     <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Marko+One&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   </head>
   <header>
     <label id="user-info"></label>
   </header>
   <body onload="createDefaultColors()">
-    <header>Pixel Art</header>
+    <header id="pixel-art">Pixel Art</header>
     <div id="palette">
       <label for="pen">Wähle eine Farbe aus: </label>
       <input type="color" id="pen" name="color" value="#e66465" />
@@ -36,7 +36,7 @@
       value="6"
     />
     <button id="create-grid" class="btn" onClick="createGrid()">Erstellen</button>
-    <button id="clear-grid" class="btn" onClick="clearArtArea()">Reset</button>
+    <button id="clear-grid" class="btn" onClick="clearArtArea()">Löschen</button>
     <div id="art"></div>
     <div id="color-history"></div>
     <script src="script.js"></script>

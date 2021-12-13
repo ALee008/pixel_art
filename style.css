@@ -6,9 +6,12 @@ body {
   background-color: beige;
 }
 
-header {
-  font-family: 'Marko One', serif;
-  font-size: 8em
+#pixel-art {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 8em;
+  text-align: center;
+  border: dotted 2px black;
+  padding-top: 10px;
 }
 
 /* buttons */
@@ -20,21 +23,22 @@ header {
 }
 
 #clear-grid {
-  background-color: red;
-  color: white;
+  background-color: rgb(253, 47, 10);
+  color: rgb(7, 32, 1);
   
 }
 
 #clear-grid:hover {
-  background: #da190b;
+  background: rgb(158, 3, 3);
 }
 
 #create-grid {
-  color: black;
+  color: rgb(24, 24, 24);
+  background-color: chartreuse;
 }
 
 #create-grid:hover {
-  background: #ddd;
+  background: rgb(0, 133, 0);
 }
 
 /* input fields*/

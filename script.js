@@ -71,14 +71,20 @@ function createPixel() {
 }
 
 function checkColumnAndRowSize(column, row) {
+  /**
+   * @column number of columns in grid
+   * @row number of rows in grid
+   * 
+   * If @column or @row is empty show an error. Otherwise remove possible error and return 1.
+   */
+  const user_info = document.getElementById("user-info");
   if (column === "" || row === "") {
-    const user_info = document.getElementById("user-info");
     user_info.style.backgroundColor = "#ffcccc";
     user_info.style.color = "#e60000";
     user_info.innerHTML = "Spalten- und Zeilenangabe darf nicht leer sein.";
     return 1;
   }
-
+  user_info.innerHTML = null;
   return 0;
 }
 
