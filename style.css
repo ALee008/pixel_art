@@ -3,8 +3,48 @@ html {
 }
 body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: beige;
 }
 
+header {
+  font-family: 'Marko One', serif;
+  font-size: 8em
+}
+
+/* buttons */
+.btn {
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+#clear-grid {
+  background-color: red;
+  color: white;
+  
+}
+
+#clear-grid:hover {
+  background: #da190b;
+}
+
+#create-grid {
+  color: black;
+}
+
+#create-grid:hover {
+  background: #ddd;
+}
+
+/* input fields*/
+#spalten, #zeilen{
+  border-radius: .2em;
+  font-size: 1em;
+}
+
+
+/* coloring area */
 #art {
   display:table;
   
@@ -36,6 +76,7 @@ margin-bottom: 1em;
 .pen {
   display: inline-block;
   margin-top: .5em;
+  margin-right: 2px;
   width: 20px;
   height: 20px;
   border: solid 1px black;

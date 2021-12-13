@@ -2,23 +2,19 @@
 <html>
   <head>
     <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marko+One&display=swap" rel="stylesheet">
   </head>
   <header>
     <label id="user-info"></label>
   </header>
-  <body>
+  <body onload="createDefaultColors()">
+    <header>Pixel Art</header>
     <div id="palette">
       <label for="pen">Wähle eine Farbe aus: </label>
       <input type="color" id="pen" name="color" value="#e66465" />
       <div id="color-presets">
-        <div class="pen" style="background-color: #000000;" onclick="setPresetPixelColor(this)"></div>
-        <div class="pen" style="background-color: #ff0000;" onclick="setPresetPixelColor(this)"></div>
-        <div class="pen" style="background-color: #ff8800;" onclick="setPresetPixelColor(this)"></div>
-        <div class="pen" style="background-color: #ffff00;" onclick="setPresetPixelColor(this)"></div>
-        <div class="pen" style="background-color: #adff2f;" onclick="setPresetPixelColor(this)"></div>
-        <div class="pen" style="background-color: #006400;" onclick="setPresetPixelColor(this)"></div>
-        <div class="pen" style="background-color: #40e0d0;" onclick="setPresetPixelColor(this)"></div>
-        <div class="pen" style="background-color: #00ccff;" onclick="setPresetPixelColor(this)"></div>
       </div>
     </div>
     <label>Spalten x Zeilen:</label>
@@ -29,6 +25,7 @@
       required
       maxlength="2"
       size="4"
+      value="6"
     /> x <input
       type="text"
       id="zeilen"
@@ -36,8 +33,10 @@
       required
       maxlength="2"
       size="4"
+      value="6"
     />
-    <button id="create-grid" onClick="createGrid()">Erstellen</button>
+    <button id="create-grid" class="btn" onClick="createGrid()">Erstellen</button>
+    <button id="clear-grid" class="btn" onClick="clearArtArea()">Reset</button>
     <div id="art"></div>
     <div id="color-history"></div>
     <script src="script.js"></script>

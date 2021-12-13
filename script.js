@@ -2,9 +2,10 @@
 TODO: Weitere Ideen:
 0. weiter huebsch machen.
 1. Bild exportieren, z.B. mit third party bib: dom-to-image: https://github.com/tsayen/dom-to-image
-2. merke die letzten 5 ausgewaehlten Farben
 3. Malen nach Zahlen auf Basis existierenden Bildes
 4. Wenn man scrollt soll die Farbauswahl mit scrollen
+5. einen clear Knopf -> dabei soll nur die Zeichenflaeche geleert, nicht komplett geloescht werden
+6. ueber mehrere Zellen ziehen beim malen
 */
 
 // convert rgb and rgba values to hex
@@ -30,10 +31,9 @@ function setPixelColor() {
   this.style.backgroundColor = penColor;
 }
 
-function setPresetPixelColor(presetColor) {
+function setPresetPixelColor() {
   let penColor = document.getElementById("pen");
-  console.log(presetColor.style.backgroundColor);
-  penColor.value = rgba2hex(presetColor.style.backgroundColor);
+  penColor.value = rgba2hex(this.style.backgroundColor);
 }
 
 function resetPixelColor(pixel) {
@@ -45,6 +45,19 @@ function createRow() {
   row.className = "row";
 
   return row;
+}
+
+function createDefaultColors() {
+  let colorPresets = document.getElementById("color-presets");
+  const colors = ["#000000", "#ff0000", "#ff8800", "#ffff00", "#adff2f", "#006400", "#40e0d0", "#00ccff"]
+
+  for (const color of colors) {
+    let defaultColor = document.createElement("div");
+    defaultColor.className = "pen";
+    defaultColor.style.backgroundColor = color;
+    defaultColor.addEventListener("click", setPresetPixelColor);
+    colorPresets.appendChild(defaultColor);
+  }
 }
 
 function createPixel() {
@@ -70,6 +83,7 @@ function checkColumnAndRowSize(column, row) {
 }
 
 function clearArtArea() {
+  artArea.style.border = null;
   while (artArea.firstElementChild) {
     artArea.removeChild(artArea.firstElementChild);
   }
