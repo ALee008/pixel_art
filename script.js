@@ -26,10 +26,11 @@ let colorPicker = document.querySelector("input");
 let artArea = document.getElementById("art");
 artArea.addEventListener("contextmenu", (e) => e.preventDefault());
 
-function setPixelColor() {
+function setPixelColor(target) {
   let penColor = document.getElementById("pen").value;
-  this.style.backgroundColor = penColor;
-}
+  target.style.backgroundColor = penColor;
+  }
+
 
 function setPresetPixelColor() {
   let penColor = document.getElementById("pen");
@@ -49,7 +50,16 @@ function createRow() {
 
 function createDefaultColors() {
   let colorPresets = document.getElementById("color-presets");
-  const colors = ["#000000", "#ff0000", "#ff8800", "#ffff00", "#adff2f", "#006400", "#40e0d0", "#00ccff"]
+  const colors = [
+    "#000000",
+    "#ff0000",
+    "#ff8800",
+    "#ffff00",
+    "#adff2f",
+    "#006400",
+    "#40e0d0",
+    "#00ccff",
+  ];
 
   for (const color of colors) {
     let defaultColor = document.createElement("div");
@@ -64,7 +74,18 @@ function createPixel() {
   let pixel = document.createElement("div");
   pixel.className = "pixel";
   pixel.style.backgroundColor = "white";
-  pixel.addEventListener("click", setPixelColor);
+  // mouseover event needed to fill multiple cells
+  pixel.addEventListener("mouseover", (e) => {
+    if (e.buttons === 1) {
+      setPixelColor(e.target);
+    }
+  });
+  // mousedown event needed to fill first clicked cell
+  pixel.addEventListener("mousedown", (e) => {
+    if (e.button === 0) {
+      setPixelColor(e.target);
+    }
+  });
   pixel.addEventListener("contextmenu", resetPixelColor);
 
   return pixel;
@@ -74,7 +95,7 @@ function checkColumnAndRowSize(column, row) {
   /**
    * @column number of columns in grid
    * @row number of rows in grid
-   * 
+   *
    * If @column or @row is empty show an error. Otherwise remove possible error and return 1.
    */
   const user_info = document.getElementById("user-info");

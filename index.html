@@ -37,7 +37,11 @@
     />
     <button id="create-grid" class="btn" onClick="createGrid()">Erstellen</button>
     <button id="clear-grid" class="btn" onClick="clearArtArea()">Löschen</button>
-    <div id="art"></div>
+    <!-- Set events ondragstart and ondragend to prevent browser from interpreting mouse events 
+    as drag and drop events (when in art area), see:
+    https://stackoverflow.com/questions/704564/disable-drag-and-drop-on-html-elements -->
+    <div id="art" ondragstart="return false" ondragend="return false"></div>
+
     <div id="color-history"></div>
     <script src="script.js"></script>
   </body>
