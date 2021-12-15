@@ -41,6 +41,13 @@ body {
   background: rgb(0, 133, 0);
 }
 
+#reset-grid {
+  background: rgb(158, 3, 3);
+}
+#reset-grid:hover {
+  background: rgb(253, 47, 10);
+}
+
 /* input fields*/
 #spalten, #zeilen{
   border-radius: .2em;
@@ -60,6 +67,12 @@ body {
 #palette {
   margin-top: 1em;
   margin-bottom: 1em;
+}
+
+#colors {
+  display: grid;
+  grid-template-columns: max-content auto;
+  column-gap: 3em;
 }
 
 #user-info {

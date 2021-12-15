@@ -2,10 +2,10 @@
 TODO: Weitere Ideen:
 0. weiter huebsch machen.
 1. Bild exportieren, z.B. mit third party bib: dom-to-image: https://github.com/tsayen/dom-to-image
+2. Grid mit Enter erzeugen.
 3. Malen nach Zahlen auf Basis existierenden Bildes
 4. Wenn man scrollt soll die Farbauswahl mit scrollen
 5. einen clear Knopf -> dabei soll nur die Zeichenflaeche geleert, nicht komplett geloescht werden
-6. ueber mehrere Zellen ziehen beim malen
 */
 
 // convert rgb and rgba values to hex
@@ -29,8 +29,7 @@ artArea.addEventListener("contextmenu", (e) => e.preventDefault());
 function setPixelColor(target) {
   let penColor = document.getElementById("pen").value;
   target.style.backgroundColor = penColor;
-  }
-
+}
 
 function setPresetPixelColor() {
   let penColor = document.getElementById("pen");
@@ -84,11 +83,37 @@ function createPixel() {
   pixel.addEventListener("mousedown", (e) => {
     if (e.button === 0) {
       setPixelColor(e.target);
+      addToHistory();
     }
   });
   pixel.addEventListener("contextmenu", resetPixelColor);
 
   return pixel;
+}
+
+function addToHistory() {
+  /**
+   * add color to history palette. Can hold a maximum of 8 colors, no duplicates. Older colors
+   * will be replaced by recent choice.
+   */
+  let colorHistory = document.getElementById("color-history");
+  let usedColor = document.createElement("div");
+  usedColor.className = "pen";
+  usedColor.style.backgroundColor = document.getElementById("pen").value;
+  usedColor.addEventListener("click", setPresetPixelColor);
+
+  // Do nothing if usedColor already in `color-history`.
+  // TODO: refactor checks to different function
+  for (let child of colorHistory.childNodes) {
+    if (usedColor.isEqualNode(child)) {
+      return 0;
+    }
+  }
+  // If `color-history` has 8 colors remove first color from stack.
+  if (colorHistory.childElementCount === 8) {
+    colorHistory.removeChild(colorHistory.firstElementChild);
+  }
+  colorHistory.appendChild(usedColor);
 }
 
 function checkColumnAndRowSize(column, row) {
@@ -111,9 +136,16 @@ function checkColumnAndRowSize(column, row) {
 
 function clearArtArea() {
   artArea.style.border = null;
+  // remove all children from parent.
   while (artArea.firstElementChild) {
     artArea.removeChild(artArea.firstElementChild);
   }
+}
+
+function resetArtArea() {
+  Array.from(document.getElementsByClassName("pixel")).map(
+    (nodeElement) => (nodeElement.style.backgroundColor = "white")
+  );
 }
 
 function createGrid() {
