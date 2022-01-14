@@ -5,7 +5,6 @@ TODO: Weitere Ideen:
 2. Grid mit Enter erzeugen.
 3. Malen nach Zahlen auf Basis existierenden Bildes
 4. Wenn man scrollt soll die Farbauswahl mit scrollen
-5. einen clear Knopf -> dabei soll nur die Zeichenflaeche geleert, nicht komplett geloescht werden
 */
 
 // convert rgb and rgba values to hex
